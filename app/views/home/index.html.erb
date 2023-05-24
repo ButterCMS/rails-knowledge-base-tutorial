@@ -1,0 +1,158 @@
+<div>
+    <div id="docsSearch">
+        <h1>
+        <%= @homeData.fields.kb_home_title %>
+        </h1>
+
+        <form action="/" method="GET" id="searchBar" autocomplete="off" class="md:w-[635px] mx-auto">
+            <div class="w-full md:flex md:items-center md:justify-center -mx-2">
+                <div class="md:w-[460px] px-2">
+                    <input type="text" 
+                        name="query" 
+                        title="search-query" 
+                        class="search-query block" 
+                        placeholder="Search Beacon, Docs, Reports, etc" 
+                        aria-label="Search Beacon, Docs, Reports, etc" value=""
+                    >
+                </div>
+
+                <div class="md:w-4/12 px-2">
+                    <button 
+                        type="submit" 
+                        aria-label="Search"
+                        class="block" 
+                    >
+                        <i class="icon-search lp"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </div>
+
+            <% if @listData %>
+                <div id="serp-dd" class="mt-4">
+                    <ul class="result">
+                        <% @listData.each do |article| %>
+                        <li>
+                            <%= link_to article_path(article.slug, article.slug)  do%>
+                                <%= article.name %>
+                            <% end %>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+        </form>
+    </div>
+
+
+    <section id="contentArea" class="cont-fluid container mx-auto">
+        <div id="noResults" style="display:none;">No results found</div>
+        <section class="collection-category" id="collection-category-1">
+            <h2 id="collection-1">
+                <a>
+                 <%= @homeData.fields.kb_home_sections[0].kb_section_title %>
+                </a>
+            </h2>
+            <section class="flex flex-wrap category-list">
+                
+                <% @homeData.fields.kb_home_sections[0].kb_sections.each do |section| %>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12">
+                        <%= link_to section_path(section.slug)  do%>
+                            <div class="category" id="<%= section.slug %>" style="background-image: url(<%= section.fields.kb_section_article_image %>)">
+                                <h3>
+                                    <%= section.fields.kb_section_name %>
+                                </h3>
+                                <p>
+                                    <%= section.fields.kb_section_description %>
+                                </p>
+                                <p class="article-count">                                    
+                                    <span class="notranslate">
+                                        <%= section.fields.kb_section_article_type.length() %>
+                                    </span> 
+                                    articles                                     
+                                </p>         
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+
+            </section>
+        </section>
+        
+        <section class="collection-category" id="collection-category-1202">
+            <h2 id="collection-1202">
+                <a>
+                 <%= @homeData.fields.kb_home_sections[1].kb_section_title %>
+                </a>
+            </h2>
+
+            <section class="flex flex-wrap category-list ">
+                <% @homeData.fields.kb_home_sections[1].kb_sections.each do |section| %>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12">
+                        <%= link_to section_path(section.slug)  do%>
+                            <div class="category" id="<%= section.slug %>" style="background-image: url(<%= section.fields.kb_section_article_image %>)">
+                                <h3>
+                                    <%= section.fields.kb_section_name %>
+                                </h3>
+                                <p>
+                                    <%= section.fields.kb_section_description %>
+                                </p>
+                                <p class="article-count">                                    
+                                    <span class="notranslate">
+                                        <%= section.fields.kb_section_article_type.length() %>
+                                    </span> 
+                                    articles                                     
+                                </p>         
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </section>
+        </section>
+        
+        <section class="collection-category" id="collection-category-3">
+            <h2 id="collection-3">
+                <a>
+                 <%= @homeData.fields.kb_home_sections[2].kb_section_title %>
+                </a>
+            </h2>
+
+            <section class="category-list flex flex-wrap">
+                <% @homeData.fields.kb_home_sections[2].kb_sections.each do |section| %>
+                    <div class="p-3 w-full md:w-6/12 lg:w-4/12">
+                        <%= link_to section_path(section.slug)  do%>
+                            <div class="category" id="<%= section.slug %>" style="background-image: url(<%= section.fields.kb_section_article_image %>)">
+                                <h3>
+                                    <%= section.fields.kb_section_name %>
+                                </h3>
+                                <p>
+                                    <%= section.fields.kb_section_description %>
+                                </p>
+                                <p class="article-count">                                    
+                                    <span class="notranslate">
+                                        <%= section.fields.kb_section_article_type.length() %>
+                                    </span> 
+                                    articles                                     
+                                </p>         
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+            </section>
+        </section>
+
+        <footer class="center">
+            <p>
+                ©<a href="https://www.helpscout.com/">Help Scout</a>
+                2023. 
+                <span>
+                    Powered by 
+                    <a rel="nofollow noopener noreferrer" href="https://www.helpscout.com/knowledge-base/?utm_source=docs&amp;utm_medium=footerlink&amp;utm_campaign=Docs+Branding" target="_blank">
+                    Help Scout
+                    </a>
+                </span>
+            </p>
+        </footer>
+    </section>
+
+</div>
