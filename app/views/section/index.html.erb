@@ -1,0 +1,105 @@
+<div>
+    <section id="contentArea" class="container-fluid max-w-[1250px] mx-auto">
+        <div class="row-fluid">
+            <section id="main-content" class="span9">
+                <div class="contentWrapper">    
+                    <hgroup id="categoryHead">
+                        <% if @sectionData %>
+                            <h1>
+                                <%= @sectionData.fields.kb_section_name %>
+                            </h1>
+                            <p class="descrip">
+                                <%= @sectionData.fields.kb_section_description %>
+                            </p>
+                        <% else %>
+                            <h1>
+                                Here's what we found for <%= @query %>
+                            </h1>
+                        <% end %>
+
+                        <div class="sort">   
+                            <form action="/category/832-getting-started" method="GET">
+                                <select name="sort" id="sortBy" title="sort-by" onchange="this.form.submit();" aria-label="Page reloads on selection">
+                                    <option value="">Sort by Default</option>
+                                    <option value="name">Sort A-Z</option>
+                                    <option value="popularity">Sort by Popularity</option>
+                                    <option value="updatedAt">Sort by Last Updated</option>
+                                </select>
+                            </form>
+                        </div>
+                    </hgroup><!--/categoryHead-->
+
+                    <% if @sectionData %>
+                        <% @sectionData.fields.kb_section_article_type.each do |article| %>
+                            <ul class="articleList">
+                                <li>
+                                    <%= link_to article_path(@sectionParamsValue, article.name) do%>
+                                        <i class="icon-article-doc"></i>
+                                        <span>
+                                            <%= article.fields.article_description %>
+                                        </span>   
+                                    <% end %>
+                                </li>
+                            </ul>
+                        <% end %>
+                    <% else %>
+                        <ul class="articleList">
+                            <li>
+                                No articles were found. Feel free to try again or contact us.
+                            </li>
+                        </ul>
+                    <% end %>
+
+
+                    
+                </div><!--/contentWrapper-->
+            </section><!--/content-->
+
+            <aside id="sidebar" class="span3">
+                <form action="/" method="GET" id="searchBar" class="sm" autocomplete="off">
+                    <input type="hidden" name="collectionId">
+                    <input type="text" name="query" title="search-query" class="search-query" placeholder="Search" value="" aria-label="Search">
+                    <button type="submit">
+                        <span class="sr-only">Toggle Search</span>
+                        <i class="icon-search"></i>
+                    </button>
+                    <div id="serp-dd" style="display: none;" class="sb">
+                        <ul class="result">
+                        </ul>
+                    </div>
+                </form>
+
+                
+                <h3>Categories</h3>
+                <ul class="nav nav-list">
+                    <li class="active">
+                        <a href="/category/832-getting-started">Getting Started  <i class="icon-arrow"></i></a>
+                    </li>         
+                    <li><a>Account Management  <i class="icon-arrow"></i></a></li>
+                    <li><a >Reporting  <i class="icon-arrow"></i></a></li>
+                    <li><a >Copying Email to Help Scout  <i class="icon-arrow"></i></a></li>
+                    <li><a >Working with Conversations  <i class="icon-arrow"></i></a></li>
+                    <li><a >Productivity  <i class="icon-arrow"></i></a></li>
+                    <li><a >Mailbox and User Settings  <i class="icon-arrow"></i></a></li>
+                    <li><a >Mobile Apps  <i class="icon-arrow"></i></a></li>
+                    <li><a >Integrations  <i class="icon-arrow"></i></a></li>
+                </ul>
+                
+            </aside><!--/span-->
+        </div><!--/row-->
+            
+        <div id="noResults" style="display:none;">No results found</div>
+        
+        <%# <footer>
+            <p>©
+                <a href="https://www.helpscout.com/">Help Scout</a> 2023. 
+                <span>
+                    Powered by 
+                    <a rel="nofollow noopener noreferrer" href="https://www.helpscout.com/knowledge-base/?utm_source=docs&amp;utm_medium=footerlink&amp;utm_campaign=Docs+Branding" target="_blank">
+                        Help Scout
+                    </a>
+                </span>
+            </p>
+        </footer> %>
+    </section>
+</div>

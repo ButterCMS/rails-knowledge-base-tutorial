@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Foodlog</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <main class="">
+      <div class="bg-[#404996] p-5 relative">
+        <div class="max-w-[1250px] py-2 mx-auto flex items-center justify-between w-full">
+          <div class="">
+            <a class="brand block" href="/">
+              <span>Help Scout Support</span>
+            </a>
+          </div>
+
+          <div class="">
+            <div class="block md:hidden">
+              <span class="sr-only">Toggle Navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </div>
+
+            <div class="hidden md:flex navbar-links items-center -mx-6">
+              <div id="home" class="px-6">
+                  <a href="/">Home <b class="caret"></b></a>
+              </div>
+              <div id="help-desk" class="px-6">
+                  <a href="/collection/1-help-desk">Help Desk  <b class="caret"></b></a>
+              </div>
+              <div id="beacon" class="px-6">
+                  <a href="/collection/1202-beacon">Beacon  <b class="caret"></b></a>
+              </div>
+              <div id="docs" class="px-6">
+                  <a href="/collection/3-docs">Docs  <b class="caret"></b></a>
+              </div>
+              <div id="status" class="px-6">
+                  <a href="/collection/1454-status">Status  <b class="caret"></b></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= yield %>
+    </main>
+  </body>
+</html>
